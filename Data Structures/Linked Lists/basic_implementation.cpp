@@ -126,7 +126,7 @@ Node* deleteKthNode(Node* head, int k){
     Node* temp = head;
     Node* prev = NULL;
     int count = 0;
-    
+
     while(temp!=NULL){
         count++;
         if(count==k){
@@ -156,6 +156,34 @@ void printLL(Node* head){
     }
 }
 
+//check palindrom list
+bool isPalindrome(Node* head){
+
+    if(head->next==nullptr){
+        return true;
+    }
+
+    Node* temp = head;
+    stack<int> st;
+
+    while(temp!=NULL){
+        st.push(temp->data);
+        temp = temp->next;
+    }
+
+    temp = head;
+    while(!st.empty()){
+        int data = st.top();
+        st.pop();
+        if(data!=temp->data){
+            return false;
+        }
+        temp = temp->next;
+    }
+
+    return true;
+
+}
 
 int main(){
 
